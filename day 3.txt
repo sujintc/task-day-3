@@ -1,0 +1,104 @@
+1.comparison
+_____________
+
+let obj1 = { name: "person 1", age: 5 };
+let obj2 = { age: 5, name: "person 1" };
+let obj1String = JSON.stringify(obj1);
+let obj2String = JSON.stringify(obj2);
+
+if (obj1String === obj2String) {
+  console.log("The JSON objects are equal.");
+} else {
+  console.log("The JSON objects are not equal.");
+}
+
+OUTPUT
+____________
+The JSON objects are not equal.
+_________________________________________________________________________________________________________________________________________________________________________
+
+2.Countries flag
+______________________
+
+fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      const flag = country.flags.svg;
+      console.log(flag);
+    });
+  })
+  .catch(error => {
+    console.log('An error occurred:', error);
+  });
+________________________________________________________________________________________________________________________________________________________________________
+
+country name
+_________________
+fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      console.log(country.name.common);
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+_______________________________________________________________________________________________________________________________________________________________________
+
+Country Region
+____________________
+
+______fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+    // Extract regions from the country data
+    const regions = data.map(country => country.region);
+
+    // Display regions in the console
+    console.log(regions);
+  })
+  .catch(error => {
+    console.log('An error occurred:', error);
+  });
+_________________________________________________________________________________________________________________________________________________________________
+
+
+Country subregion
+________________________
+
+
+fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+  
+    const subregions = data.map(country => country.subregion);
+    console.log(subregions);
+  })
+  .catch(error => {
+    console.log('An error occurred:', error);
+  });
+
+
+_______________________________________________________________________________________________________________________________________________________________________
+
+Country Population
+_______________________
+
+
+fetch("https://restcountries.com/v3.1/all")
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      const { name, population } = country;
+      console.log(`${name.common}: ${population}`);
+    });
+  })
+  .catch(error => {
+    console.log("Error:", error);
+  });
+
+
+_______________________________________________________________________________________________________________________________________________________________________
+
